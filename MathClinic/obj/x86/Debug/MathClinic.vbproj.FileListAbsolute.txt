@@ -3,12 +3,12 @@ E:\code\vb\MathClinic\MathClinic\bin\Debug\MathClinic.exe
 E:\code\vb\MathClinic\MathClinic\bin\Debug\MathClinic.pdb
 E:\code\vb\MathClinic\MathClinic\bin\Debug\MathClinic.xml
 E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\ResolveAssemblyReference.cache
-E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.Login.resources
 E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.Resources.resources
-E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.Questions.resources
-E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.Test.resources
 E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.exe
 E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.xml
 E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.pdb
+E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.frmLogin.resources
+E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.frmQuestions.resources
+E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.frmTest.resources

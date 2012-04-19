@@ -5,11 +5,10 @@ Imports System
 Imports System.IO
 Imports System.Net
 Imports System.Web
-Imports System.Runtime.Serialization
-Imports System.Runtime.Serialization.Json
+Imports System.Web.Script.Serialization
 Imports System.Text
 
-Public Class Login
+Public Class frmLogin
 
     Private Sub btnLogin_Click(sender As System.Object, e As System.EventArgs) Handles btnLogin.Click
         Dim strUsername As String = txtUsername.Text
@@ -19,6 +18,9 @@ Public Class Login
         Dim request As HttpWebRequest
         Dim response As HttpWebResponse = Nothing
         Dim postStream As Stream = Nothing
+        Dim jsonQuestions As String
+        Dim questions As dataQuestions
+        Dim jss As JavaScriptSerializer = New JavaScriptSerializer()
 
         ' Create a request object to operate
         request = DirectCast(WebRequest.Create("http://vps.kastlersteinhauser.com/math/login"), HttpWebRequest)
@@ -53,7 +55,7 @@ Public Class Login
 
         Try
             ' Get the response
-            'response = DirectCast(request.GetResponse(), HttpWebResponse)
+            response = DirectCast(request.GetResponse(), HttpWebResponse)
             ' Open the stream using StreamReader for easy access
             'Dim reader As New StreamReader(response.GetResponseStream())
             ' Read the content
@@ -81,20 +83,24 @@ Public Class Login
             ' Open the stream using StreamReader for easy access
             Dim reader As New StreamReader(response.GetResponseStream())
             ' Read the content
-            Dim content As String = reader.ReadToEnd()
+            jsonQuestions = reader.ReadToEnd()
 
-
-
-            ' Write response to console
-            Console.WriteLine(content)
+            ' Parse JSON response into a response object
+            questions = jss.Deserialize(Of dataQuestions)(jsonQuestions)
         Catch ex As Exception
             Console.WriteLine("Error receiving response from server.")
         Finally
             If Not response Is Nothing Then response.Close()
         End Try
 
-        'Questions.Questions_setList(json)
-        Questions.Show()
+        Try
+
+        Catch ex As Exception
+            Console.WriteLine("Error parsing questions JSON")
+        End Try
+
+        frmQuestions.Questions_setList(questions.questions)
+        frmQuestions.Show()
         Me.Hide()
     End Sub
 End Class
