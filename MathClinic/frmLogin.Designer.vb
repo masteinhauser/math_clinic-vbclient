@@ -27,6 +27,8 @@ Partial Class frmLogin
         Me.btnLogin = New System.Windows.Forms.Button()
         Me.lblUsername = New System.Windows.Forms.Label()
         Me.lblPassword = New System.Windows.Forms.Label()
+        Me.lblServerMessage = New System.Windows.Forms.Label()
+        Me.pgrsLoginBar = New System.Windows.Forms.ProgressBar()
         Me.SuspendLayout()
         '
         'txtUsername
@@ -46,7 +48,7 @@ Partial Class frmLogin
         '
         'btnLogin
         '
-        Me.btnLogin.Location = New System.Drawing.Point(196, 156)
+        Me.btnLogin.Location = New System.Drawing.Point(196, 125)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(75, 23)
         Me.btnLogin.TabIndex = 2
@@ -71,17 +73,35 @@ Partial Class frmLogin
         Me.lblPassword.TabIndex = 4
         Me.lblPassword.Text = "Password"
         '
-        'Login
+        'lblServerMessage
+        '
+        Me.lblServerMessage.AutoSize = True
+        Me.lblServerMessage.Location = New System.Drawing.Point(27, 193)
+        Me.lblServerMessage.Name = "lblServerMessage"
+        Me.lblServerMessage.Size = New System.Drawing.Size(0, 13)
+        Me.lblServerMessage.TabIndex = 5
+        '
+        'pgrsLoginBar
+        '
+        Me.pgrsLoginBar.Location = New System.Drawing.Point(113, 155)
+        Me.pgrsLoginBar.Name = "pgrsLoginBar"
+        Me.pgrsLoginBar.Size = New System.Drawing.Size(157, 23)
+        Me.pgrsLoginBar.TabIndex = 6
+        Me.pgrsLoginBar.Visible = False
+        '
+        'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(384, 262)
+        Me.Controls.Add(Me.pgrsLoginBar)
+        Me.Controls.Add(Me.lblServerMessage)
         Me.Controls.Add(Me.lblPassword)
         Me.Controls.Add(Me.lblUsername)
         Me.Controls.Add(Me.btnLogin)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.txtUsername)
-        Me.Name = "Login"
+        Me.Name = "frmLogin"
         Me.Text = "Math Clinic"
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -92,5 +112,7 @@ Partial Class frmLogin
     Friend WithEvents btnLogin As System.Windows.Forms.Button
     Friend WithEvents lblUsername As System.Windows.Forms.Label
     Friend WithEvents lblPassword As System.Windows.Forms.Label
+    Friend WithEvents lblServerMessage As System.Windows.Forms.Label
+    Friend WithEvents pgrsLoginBar As System.Windows.Forms.ProgressBar
 
 End Class
