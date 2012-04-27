@@ -19,135 +19,51 @@ Public Class frmLogin
         Dim strUsername As String = txtUsername.Text
         Dim strPassword As String = txtPassword.Text
 
-        Dim content As String = String.Empty
         Dim server As String = String.Empty
         Dim statusCode As String = String.Empty
         Dim statusDescription As String = String.Empty
 
-        Dim request As HttpWebRequest
-        Dim response As HttpWebResponse = Nothing
-        Dim postStream As Stream = Nothing
-        Dim jsonQuestions As String
+        Dim dicData As Dictionary(Of String, String) = New Dictionary(Of String, String)
+        Dim strResponse As String
         Dim questions As data.QuestionsList
         Dim jss As JavaScriptSerializer = New JavaScriptSerializer()
 
-        ' Create a request object to operate
-        request = DirectCast(WebRequest.Create("http://vps.kastlersteinhauser.com/math/login"), HttpWebRequest)
-        pgrsLoginBar.PerformStep()
-
-        ' Specify we want to POST
-        request.Method = "POST"
-        request.ContentType = "application/x-www-form-urlencoded"
-
         ' Add data we want to send, username and password
-        Dim data As StringBuilder = New StringBuilder()
-        data.Append("username=" + HttpUtility.UrlEncode(strUsername))
-        data.Append("&password=" + HttpUtility.UrlEncode(strPassword))
-        data.Append("&submit=" + HttpUtility.UrlEncode("Login"))
+        dicData.Add("username", strUsername)
+        dicData.Add("password", strPassword)
+        dicData.Add("submit", "Login")
         pgrsLoginBar.PerformStep()
 
-        ' Create byte array of data we want to send
-        Dim byteData As Byte() = UTF8Encoding.UTF8.GetBytes(data.ToString())
-        pgrsLoginBar.PerformStep()
-
-        ' Set content length of the request
-        request.ContentLength = byteData.Length
-
-        ' Store some cookies
-        request.CookieContainer = AppShared.cookies
-
-        ' Write the data
         Try
-            postStream = request.GetRequestStream()
-            postStream.Write(byteData, 0, byteData.Length)
-            pgrsLoginBar.PerformStep()
+            strResponse = AppShared.makePostRequest("http://vps.kastlersteinhauser.com/math/login", dicData)
         Catch ex As Exception
-            lblServerMessage.Text = "Error writing data to server."
-        Finally
-            If Not postStream Is Nothing Then postStream.Close()
-        End Try
-
-        Try
-            ' Get the response
-            response = DirectCast(request.GetResponse(), HttpWebResponse)
-            statusCode = response.Server
-            statusCode = response.StatusCode.ToString
-            statusDescription = response.StatusDescription
-            pgrsLoginBar.PerformStep()
-        Catch ex As Exception
-            lblServerMessage.Text = "No response received from server."
-            Console.WriteLine("Server: " + server)
-            Console.WriteLine("Server response: " + statusCode)
-            Console.WriteLine("Description: " + statusDescription)
-            Console.WriteLine("Cached?: " + response.IsFromCache.ToString)
-            Exit Sub
-        End Try
-
-        Try
-            ' Open the stream using StreamReader for easy access
-            'Dim reader As New StreamReader(response.GetResponseStream())
-            ' Read the content
-            'content = reader.ReadToEnd()
-
-            AppShared.cookies = request.CookieContainer
-        Catch ex As Exception
-            ' Write response to console
-            'Console.WriteLine(content)
-            lblServerMessage.Text = "Error logging into server." + statusCode + ": " + statusDescription
-            Console.WriteLine("Server: " + server)
-            Console.WriteLine("Server response: " + statusCode)
-            Console.WriteLine("Description: " + statusDescription)
-            Console.WriteLine("Cached?: " + response.IsFromCache.ToString)
+            lblServerMessage.Text = "Error logging into server."
             Exit Sub
         Finally
-            If Not response Is Nothing Then response.Close()
+            pgrsLoginBar.PerformStep()
         End Try
-
-        ' Create a request object to operate
-        request = DirectCast(WebRequest.Create("http://vps.kastlersteinhauser.com/math/questions"), HttpWebRequest)
-
-        ' Store some cookies
-        request.CookieContainer = AppShared.cookies
 
         Try
             ' Fire the request and get the response
-            response = DirectCast(request.GetResponse(), HttpWebResponse)
-            Console.WriteLine(response)
-            statusCode = response.StatusCode.ToString
-            statusDescription = response.StatusDescription
-            pgrsLoginBar.PerformStep()
-
-            ' Open the stream using StreamReader for easy access
-            Dim reader As New StreamReader(response.GetResponseStream())
-            ' Read the content
-            jsonQuestions = reader.ReadToEnd()
-            Console.WriteLine(jsonQuestions)
-
-            ' Parse JSON response into a response object
-            questions = jss.Deserialize(Of data.QuestionsList)(jsonQuestions)
-
+            strResponse = AppShared.makeGetRequest("http://vps.kastlersteinhauser.com/math/questions")
             pgrsLoginBar.PerformStep()
         Catch ex As Exception
-            lblServerMessage.Text = "Error receiving questions from server."
-            Console.WriteLine("Server: " + server)
-            Console.WriteLine("Server response: " + statusCode)
-            Console.WriteLine("Description: " + statusDescription)
-            Console.WriteLine("Cached?: " + response.IsFromCache.ToString)
+            lblServerMessage.Text = "Error retrieving questions from server."
             Exit Sub
         Finally
-            If Not response Is Nothing Then response.Close()
+            pgrsLoginBar.PerformStep()
         End Try
 
         Try
+            ' Parse JSON response into a response object
+            questions = jss.Deserialize(Of data.QuestionsList)(strResponse)
+            pgrsLoginBar.PerformStep()
+
             frmQuestions.Questions_setList(questions.questions)
             frmQuestions.Show()
             Me.Hide()
         Catch ex As Exception
             lblServerMessage.Text = "Error parsing questions JSON"
-            Console.WriteLine("Server: " + server)
-            Console.WriteLine("Server response: " + statusCode)
-            Console.WriteLine("Description: " + statusDescription)
-            Console.WriteLine("Cached?: " + response.IsFromCache.ToString)
             Exit Sub
         End Try
 
@@ -158,6 +74,6 @@ Public Class frmLogin
         ' Increment the bar after each processing point in the Login handler
         ' Maximum is a manual count of all processing points.
         pgrsLoginBar.Minimum = 0
-        pgrsLoginBar.Maximum = 10
+        pgrsLoginBar.Maximum = 5
     End Sub
 End Class
