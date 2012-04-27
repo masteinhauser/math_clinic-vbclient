@@ -10,6 +10,7 @@ Imports System.Text
 
 Public Module AppShared
     Private inCookies As CookieContainer = Nothing
+    Private inData As data = Nothing
 
     Public Property cookies As CookieContainer
         Get
@@ -24,6 +25,24 @@ Public Module AppShared
             inCookies = value
         End Set
     End Property
+
+    Public Property data As data
+        Get
+            If inData Is Nothing Then
+                inData = New data()
+            End If
+            data = inData
+        End Get
+        Set(value As data)
+            inData = value
+        End Set
+    End Property
+
+    Public Sub close()
+        frmLogin.Close()
+        frmQuestions.Close()
+        frmTest.Close()
+    End Sub
 
     Public Function makeGetRequest(strUrl As String) As String
         Dim httpRequest As HttpWebRequest
@@ -53,7 +72,6 @@ Public Module AppShared
             Dim reader As New StreamReader(httpResponse.GetResponseStream())
             ' Read the content
             strResponse = reader.ReadToEnd()
-
 
             Return strResponse
         Catch ex As Exception

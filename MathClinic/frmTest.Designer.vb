@@ -24,12 +24,12 @@ Partial Class frmTest
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'Test
+        'frmTest
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 562)
-        Me.Name = "Test"
+        Me.Name = "frmTest"
         Me.Text = "Math Clinic - Test"
         Me.ResumeLayout(False)
 

@@ -31,6 +31,10 @@ Partial Class frmQuestions
         Me.lblMaxGenerated = New System.Windows.Forms.Label()
         Me.txtNumberGenerated = New System.Windows.Forms.TextBox()
         Me.txtMaxGenerated = New System.Windows.Forms.TextBox()
+        Me.txtNumberToGenerate = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.btnTakeTest = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'lstQuestions
@@ -52,7 +56,7 @@ Partial Class frmQuestions
         '
         'btnGenerateQuestions
         '
-        Me.btnGenerateQuestions.Location = New System.Drawing.Point(335, 262)
+        Me.btnGenerateQuestions.Location = New System.Drawing.Point(331, 90)
         Me.btnGenerateQuestions.Name = "btnGenerateQuestions"
         Me.btnGenerateQuestions.Size = New System.Drawing.Size(116, 23)
         Me.btnGenerateQuestions.TabIndex = 2
@@ -80,7 +84,7 @@ Partial Class frmQuestions
         'lblNumberGenerated
         '
         Me.lblNumberGenerated.AutoSize = True
-        Me.lblNumberGenerated.Location = New System.Drawing.Point(332, 110)
+        Me.lblNumberGenerated.Location = New System.Drawing.Point(340, 240)
         Me.lblNumberGenerated.Name = "lblNumberGenerated"
         Me.lblNumberGenerated.Size = New System.Drawing.Size(103, 13)
         Me.lblNumberGenerated.TabIndex = 5
@@ -89,7 +93,7 @@ Partial Class frmQuestions
         'lblMaxGenerated
         '
         Me.lblMaxGenerated.AutoSize = True
-        Me.lblMaxGenerated.Location = New System.Drawing.Point(332, 172)
+        Me.lblMaxGenerated.Location = New System.Drawing.Point(333, 279)
         Me.lblMaxGenerated.Name = "lblMaxGenerated"
         Me.lblMaxGenerated.Size = New System.Drawing.Size(123, 13)
         Me.lblMaxGenerated.TabIndex = 6
@@ -97,23 +101,63 @@ Partial Class frmQuestions
         '
         'txtNumberGenerated
         '
-        Me.txtNumberGenerated.Location = New System.Drawing.Point(335, 127)
+        Me.txtNumberGenerated.Location = New System.Drawing.Point(340, 256)
         Me.txtNumberGenerated.Name = "txtNumberGenerated"
         Me.txtNumberGenerated.Size = New System.Drawing.Size(100, 20)
         Me.txtNumberGenerated.TabIndex = 7
         '
         'txtMaxGenerated
         '
-        Me.txtMaxGenerated.Location = New System.Drawing.Point(335, 189)
+        Me.txtMaxGenerated.Location = New System.Drawing.Point(340, 295)
         Me.txtMaxGenerated.Name = "txtMaxGenerated"
         Me.txtMaxGenerated.Size = New System.Drawing.Size(100, 20)
         Me.txtMaxGenerated.TabIndex = 8
+        '
+        'txtNumberToGenerate
+        '
+        Me.txtNumberToGenerate.Location = New System.Drawing.Point(338, 55)
+        Me.txtNumberToGenerate.Name = "txtNumberToGenerate"
+        Me.txtNumberToGenerate.Size = New System.Drawing.Size(100, 20)
+        Me.txtNumberToGenerate.TabIndex = 10
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(335, 39)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(119, 13)
+        Me.Label3.TabIndex = 9
+        Me.Label3.Text = "Number To Generated: "
+        '
+        'btnTakeTest
+        '
+        Me.btnTakeTest.Location = New System.Drawing.Point(354, 423)
+        Me.btnTakeTest.Name = "btnTakeTest"
+        Me.btnTakeTest.Size = New System.Drawing.Size(75, 23)
+        Me.btnTakeTest.TabIndex = 11
+        Me.btnTakeTest.Text = "Take Test"
+        Me.btnTakeTest.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Enabled = False
+        Me.TextBox1.Location = New System.Drawing.Point(298, 341)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(189, 76)
+        Me.TextBox1.TabIndex = 12
+        Me.TextBox1.Text = "Select a Question on the left, review the questions on the right, then Take a Tes" & _
+    "t!"
         '
         'frmQuestions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 562)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.btnTakeTest)
+        Me.Controls.Add(Me.txtNumberToGenerate)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtMaxGenerated)
         Me.Controls.Add(Me.txtNumberGenerated)
         Me.Controls.Add(Me.lblMaxGenerated)
@@ -138,4 +182,8 @@ Partial Class frmQuestions
     Friend WithEvents lblMaxGenerated As System.Windows.Forms.Label
     Friend WithEvents txtNumberGenerated As System.Windows.Forms.TextBox
     Friend WithEvents txtMaxGenerated As System.Windows.Forms.TextBox
+    Friend WithEvents txtNumberToGenerate As System.Windows.Forms.TextBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents btnTakeTest As System.Windows.Forms.Button
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 End Class

@@ -59,7 +59,7 @@ Public Class frmLogin
             questions = jss.Deserialize(Of data.QuestionsList)(strResponse)
             pgrsLoginBar.PerformStep()
 
-            frmQuestions.Questions_setList(questions.questions)
+            frmQuestions.setList(questions.questions)
             frmQuestions.Show()
             Me.Hide()
         Catch ex As Exception
@@ -75,5 +75,12 @@ Public Class frmLogin
         ' Maximum is a manual count of all processing points.
         pgrsLoginBar.Minimum = 0
         pgrsLoginBar.Maximum = 5
+    End Sub
+
+    ' The user submitted by hitting Enter
+    Private Sub txtPassword_KeyPress(sender As System.Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtPassword.KeyPress
+        If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Enter) Then
+            Call btnLogin_Click(Nothing, Nothing)
+        End If
     End Sub
 End Class
