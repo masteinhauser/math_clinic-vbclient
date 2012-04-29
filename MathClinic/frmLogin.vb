@@ -28,6 +28,8 @@ Public Class frmLogin
         Dim questions As data.QuestionsList
         Dim jss As JavaScriptSerializer = New JavaScriptSerializer()
 
+        lblServerMessage.Text = "Logging in..."
+
         ' Add data we want to send, username and password
         dicData.Add("username", strUsername)
         dicData.Add("password", strPassword)
@@ -35,7 +37,7 @@ Public Class frmLogin
         pgrsLoginBar.PerformStep()
 
         Try
-            strResponse = AppShared.makePostRequest("http://vps.kastlersteinhauser.com/math/login", dicData)
+            strResponse = AppShared.makePostRequest(AppShared.strBaseUrl + "login", dicData)
         Catch ex As Exception
             lblServerMessage.Text = "Error logging into server."
             Exit Sub
@@ -43,9 +45,11 @@ Public Class frmLogin
             pgrsLoginBar.PerformStep()
         End Try
 
+        lblServerMessage.Text = "Loading Questions..."
+
         Try
             ' Fire the request and get the response
-            strResponse = AppShared.makeGetRequest("http://vps.kastlersteinhauser.com/math/questions")
+            strResponse = AppShared.makeGetRequest(AppShared.strBaseUrl + "questions")
             pgrsLoginBar.PerformStep()
         Catch ex As Exception
             lblServerMessage.Text = "Error retrieving questions from server."
@@ -53,6 +57,8 @@ Public Class frmLogin
         Finally
             pgrsLoginBar.PerformStep()
         End Try
+
+        lblServerMessage.Text = "Opening Question Chooser..."
 
         Try
             ' Parse JSON response into a response object
@@ -82,5 +88,9 @@ Public Class frmLogin
         If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Enter) Then
             Call btnLogin_Click(Nothing, Nothing)
         End If
+    End Sub
+
+    Private Sub frmLogin_Close(sender As System.Object, e As System.EventArgs) Handles MyBase.FormClosed
+        AppShared.close()
     End Sub
 End Class

@@ -26,3 +26,17 @@ N:\Visual Studio 2010\Projects\math_clinic-vbclient\MathClinic\obj\x86\Debug\Mat
 N:\Visual Studio 2010\Projects\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmTest.resources
 N:\Visual Studio 2010\Projects\math_clinic-vbclient\MathClinic\obj\x86\Debug\GenerateResource.read.1.tlog
 N:\Visual Studio 2010\Projects\math_clinic-vbclient\MathClinic\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\bin\Debug\MathClinic.exe.config
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.exe
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.xml
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.pdb
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\bin\Debug\MathClinic.exe
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\bin\Debug\MathClinic.pdb
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\bin\Debug\MathClinic.xml
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmLogin.resources
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.Resources.resources
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmQuestions.resources
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmTest.resources
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\GenerateResource.write.1.tlog

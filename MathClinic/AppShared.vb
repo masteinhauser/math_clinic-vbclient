@@ -9,6 +9,7 @@ Imports System.Web.Script.Serialization
 Imports System.Text
 
 Public Module AppShared
+    Public Property strBaseUrl As String = "http://vps.kastlersteinhauser.com/math/"
     Private inCookies As CookieContainer = Nothing
     Private inData As data = Nothing
 
@@ -39,9 +40,7 @@ Public Module AppShared
     End Property
 
     Public Sub close()
-        frmLogin.Close()
-        frmQuestions.Close()
-        frmTest.Close()
+        Application.Exit()
     End Sub
 
     Public Function makeGetRequest(strUrl As String) As String
