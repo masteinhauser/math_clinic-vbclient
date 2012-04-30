@@ -42,4 +42,10 @@
         Public Property correct As Boolean
         Public Property submitted As Boolean
     End Class
+
+    Public Class CreateQuestionResponse
+        Public Property success As Boolean
+        Public Property err As String
+        Public Property question As Question
+    End Class
 End Class

@@ -2,6 +2,7 @@
 Option Explicit On
 
 Imports System
+Imports System.Configuration
 Imports System.IO
 Imports System.Net
 Imports System.Web
@@ -10,8 +11,12 @@ Imports System.Text
 
 Public Module AppShared
     Public Property strBaseUrl As String = "http://vps.kastlersteinhauser.com/math/"
+    Public Property strConfigLocation As String = "app.config"
     Private inCookies As CookieContainer = Nothing
     Private inData As data = Nothing
+    Private strConfDBPath As String = "DBPath"
+    Private strConfOfflineStore As String = "OfflineStore"
+    Private strConfOfflineUse As String = "OfflineUse"
 
     Public Property cookies As CookieContainer
         Get
@@ -39,8 +44,43 @@ Public Module AppShared
         End Set
     End Property
 
+    Public Property DBPath As String
+        Get
+            DBPath = My.Settings(strConfDBPath).ToString
+        End Get
+        Set(value As String)
+            My.Settings(strConfDBPath) = value
+            My.Settings.Save()
+        End Set
+    End Property
+
+    Public Property OfflineStore As String
+        Get
+            OfflineStore = My.Settings(strConfOfflineStore).ToString
+        End Get
+        Set(value As String)
+            My.Settings(strConfOfflineStore) = value
+            My.Settings.Save()
+        End Set
+    End Property
+
+    Public Property OfflineUse As String
+        Get
+            OfflineUse = My.Settings(strConfOfflineUse).ToString
+        End Get
+        Set(value As String)
+            My.Settings(strConfOfflineUse) = value
+            My.Settings.Save()
+        End Set
+    End Property
+
     Public Sub close()
-        Application.Exit()
+        'Show the message, with apt buttons
+        If MsgBox("Do you want to exit?", MsgBoxStyle.YesNo, "Are You Sure?") = MsgBoxResult.No Then
+            'if "No" was pressed, do nothing
+        Else
+            Application.Exit()
+        End If
     End Sub
 
     Public Function makeGetRequest(strUrl As String) As String
@@ -108,16 +148,18 @@ Public Module AppShared
         ' Store some cookies
         httpRequest.CookieContainer = cookies
 
-        'Convert the data in the Dictionary to params to post
-        Dim first As Boolean = True
-        For Each pair As KeyValuePair(Of String, String) In dicData
-            If first Then
-                first = False
-            Else
-                data.Append("&")
-            End If
-            data.Append(HttpUtility.UrlEncode(pair.Key) + "=" + HttpUtility.UrlEncode(pair.Value))
-        Next
+        If dicData IsNot Nothing Then
+            'Convert the data in the Dictionary to params to post
+            Dim first As Boolean = True
+            For Each pair As KeyValuePair(Of String, String) In dicData
+                If first Then
+                    first = False
+                Else
+                    data.Append("&")
+                End If
+                data.Append(HttpUtility.UrlEncode(pair.Key) + "=" + HttpUtility.UrlEncode(pair.Value))
+            Next
+        End If
 
         ' Create byte array of data we want to send
         Dim byteData As Byte() = UTF8Encoding.UTF8.GetBytes(data.ToString())
@@ -165,3 +207,4 @@ Public Module AppShared
     End Function
 
 End Module
+

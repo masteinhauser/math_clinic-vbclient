@@ -34,7 +34,13 @@ Partial Class frmQuestions
         Me.txtNumberToGenerate = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnTakeTest = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtNewQuestion = New System.Windows.Forms.TextBox()
+        Me.lblNewQuestion = New System.Windows.Forms.Label()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
+        Me.btnAddQuestion = New System.Windows.Forms.Button()
+        Me.btnGenerateNew = New System.Windows.Forms.Button()
+        Me.btnDownloadQuestions = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lstQuestions
@@ -42,7 +48,7 @@ Partial Class frmQuestions
         Me.lstQuestions.FormattingEnabled = True
         Me.lstQuestions.Location = New System.Drawing.Point(13, 39)
         Me.lstQuestions.Name = "lstQuestions"
-        Me.lstQuestions.Size = New System.Drawing.Size(279, 511)
+        Me.lstQuestions.Size = New System.Drawing.Size(279, 381)
         Me.lstQuestions.TabIndex = 0
         '
         'lstGenerateQuestions
@@ -138,23 +144,81 @@ Partial Class frmQuestions
         Me.btnTakeTest.Text = "Take Test"
         Me.btnTakeTest.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtNewQuestion
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(298, 341)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(189, 76)
-        Me.TextBox1.TabIndex = 12
-        Me.TextBox1.Text = "Select a Question on the left, review the questions on the right, then Take a Tes" & _
-    "t!"
+        Me.txtNewQuestion.Location = New System.Drawing.Point(13, 530)
+        Me.txtNewQuestion.Name = "txtNewQuestion"
+        Me.txtNewQuestion.Size = New System.Drawing.Size(279, 20)
+        Me.txtNewQuestion.TabIndex = 13
+        '
+        'lblNewQuestion
+        '
+        Me.lblNewQuestion.AutoSize = True
+        Me.lblNewQuestion.Location = New System.Drawing.Point(13, 511)
+        Me.lblNewQuestion.Name = "lblNewQuestion"
+        Me.lblNewQuestion.Size = New System.Drawing.Size(101, 13)
+        Me.lblNewQuestion.TabIndex = 14
+        Me.lblNewQuestion.Text = "New Test Question:"
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.Location = New System.Drawing.Point(298, 324)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.ReadOnly = True
+        Me.RichTextBox1.Size = New System.Drawing.Size(189, 96)
+        Me.RichTextBox1.TabIndex = 19
+        Me.RichTextBox1.Text = "1. Select a Question on the left" & Global.Microsoft.VisualBasic.ChrW(10) & "2. Review the questions on the right" & Global.Microsoft.VisualBasic.ChrW(10) & "3. Take a T" & _
+    "est!"
+        '
+        'RichTextBox2
+        '
+        Me.RichTextBox2.Location = New System.Drawing.Point(12, 426)
+        Me.RichTextBox2.Name = "RichTextBox2"
+        Me.RichTextBox2.ReadOnly = True
+        Me.RichTextBox2.Size = New System.Drawing.Size(146, 74)
+        Me.RichTextBox2.TabIndex = 20
+        Me.RichTextBox2.Text = "Single Number" & Global.Microsoft.VisualBasic.ChrW(9) & "    [10]" & Global.Microsoft.VisualBasic.ChrW(10) & "Operators, " & Global.Microsoft.VisualBasic.ChrW(10) & "Generate for all listed   [+-*/]" & Global.Microsoft.VisualBasic.ChrW(10) & "Specific Numb" & _
+    "ers" & Global.Microsoft.VisualBasic.ChrW(9) & "    [1,3,5]" & Global.Microsoft.VisualBasic.ChrW(10) & "Range of Numbers" & Global.Microsoft.VisualBasic.ChrW(9) & "    [0..9]"
+        '
+        'btnAddQuestion
+        '
+        Me.btnAddQuestion.Location = New System.Drawing.Point(217, 477)
+        Me.btnAddQuestion.Name = "btnAddQuestion"
+        Me.btnAddQuestion.Size = New System.Drawing.Size(75, 23)
+        Me.btnAddQuestion.TabIndex = 21
+        Me.btnAddQuestion.Text = "Add"
+        Me.btnAddQuestion.UseVisualStyleBackColor = True
+        '
+        'btnGenerateNew
+        '
+        Me.btnGenerateNew.Location = New System.Drawing.Point(217, 503)
+        Me.btnGenerateNew.Name = "btnGenerateNew"
+        Me.btnGenerateNew.Size = New System.Drawing.Size(75, 23)
+        Me.btnGenerateNew.TabIndex = 22
+        Me.btnGenerateNew.Text = "Generate"
+        Me.btnGenerateNew.UseVisualStyleBackColor = True
+        '
+        'btnDownloadQuestions
+        '
+        Me.btnDownloadQuestions.Location = New System.Drawing.Point(331, 120)
+        Me.btnDownloadQuestions.Name = "btnDownloadQuestions"
+        Me.btnDownloadQuestions.Size = New System.Drawing.Size(116, 23)
+        Me.btnDownloadQuestions.TabIndex = 23
+        Me.btnDownloadQuestions.Text = "Download All"
+        Me.btnDownloadQuestions.UseVisualStyleBackColor = True
         '
         'frmQuestions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 562)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.btnDownloadQuestions)
+        Me.Controls.Add(Me.btnGenerateNew)
+        Me.Controls.Add(Me.btnAddQuestion)
+        Me.Controls.Add(Me.RichTextBox2)
+        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.lblNewQuestion)
+        Me.Controls.Add(Me.txtNewQuestion)
         Me.Controls.Add(Me.btnTakeTest)
         Me.Controls.Add(Me.txtNumberToGenerate)
         Me.Controls.Add(Me.Label3)
@@ -185,5 +249,11 @@ Partial Class frmQuestions
     Friend WithEvents txtNumberToGenerate As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents btnTakeTest As System.Windows.Forms.Button
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNewQuestion As System.Windows.Forms.TextBox
+    Friend WithEvents lblNewQuestion As System.Windows.Forms.Label
+    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
+    Friend WithEvents RichTextBox2 As System.Windows.Forms.RichTextBox
+    Friend WithEvents btnAddQuestion As System.Windows.Forms.Button
+    Friend WithEvents btnGenerateNew As System.Windows.Forms.Button
+    Friend WithEvents btnDownloadQuestions As System.Windows.Forms.Button
 End Class

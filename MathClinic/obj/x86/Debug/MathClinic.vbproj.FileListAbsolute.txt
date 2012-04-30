@@ -40,3 +40,8 @@ C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frm
 C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmTest.resources
 C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\Interop.ADODB.dll
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\Interop.ADOX.dll
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.vbproj.ResolveComReference.cache
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmMenu.resources
+C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmSettings.resources

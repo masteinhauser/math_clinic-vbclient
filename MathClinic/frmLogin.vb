@@ -25,7 +25,6 @@ Public Class frmLogin
 
         Dim dicData As Dictionary(Of String, String) = New Dictionary(Of String, String)
         Dim strResponse As String
-        Dim questions As data.QuestionsList
         Dim jss As JavaScriptSerializer = New JavaScriptSerializer()
 
         lblServerMessage.Text = "Logging in..."
@@ -45,33 +44,8 @@ Public Class frmLogin
             pgrsLoginBar.PerformStep()
         End Try
 
-        lblServerMessage.Text = "Loading Questions..."
-
-        Try
-            ' Fire the request and get the response
-            strResponse = AppShared.makeGetRequest(AppShared.strBaseUrl + "questions")
-            pgrsLoginBar.PerformStep()
-        Catch ex As Exception
-            lblServerMessage.Text = "Error retrieving questions from server."
-            Exit Sub
-        Finally
-            pgrsLoginBar.PerformStep()
-        End Try
-
-        lblServerMessage.Text = "Opening Question Chooser..."
-
-        Try
-            ' Parse JSON response into a response object
-            questions = jss.Deserialize(Of data.QuestionsList)(strResponse)
-            pgrsLoginBar.PerformStep()
-
-            frmQuestions.setList(questions.questions)
-            frmQuestions.Show()
-            Me.Hide()
-        Catch ex As Exception
-            lblServerMessage.Text = "Error parsing questions JSON"
-            Exit Sub
-        End Try
+        frmMenu.Show()
+        Me.Hide()
 
     End Sub
 
@@ -80,7 +54,7 @@ Public Class frmLogin
         ' Increment the bar after each processing point in the Login handler
         ' Maximum is a manual count of all processing points.
         pgrsLoginBar.Minimum = 0
-        pgrsLoginBar.Maximum = 5
+        pgrsLoginBar.Maximum = 3
     End Sub
 
     ' The user submitted by hitting Enter
@@ -88,9 +62,5 @@ Public Class frmLogin
         If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Enter) Then
             Call btnLogin_Click(Nothing, Nothing)
         End If
-    End Sub
-
-    Private Sub frmLogin_Close(sender As System.Object, e As System.EventArgs) Handles MyBase.FormClosed
-        AppShared.close()
     End Sub
 End Class
