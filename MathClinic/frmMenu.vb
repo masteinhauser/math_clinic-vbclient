@@ -1,4 +1,6 @@
-﻿' Myles A. K. Steinhauser
+﻿' Desc: Main form loaded when the application is launched
+' Auth: Myles A. K. Steinhauser
+' Date: 05/04/2012
 
 Option Strict On
 Option Explicit On

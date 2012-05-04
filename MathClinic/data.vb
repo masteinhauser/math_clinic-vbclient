@@ -1,4 +1,11 @@
-﻿Public Class data
+﻿' Desc: Generic data types for JSON (de)serialization
+' Auth: Myles A. K. Steinhauser
+' Date: 05/04/2012
+
+Option Strict On
+Option Explicit On
+
+Public Class data
     Public Property QuestionDictionary As Dictionary(Of Question, String()) = New Dictionary(Of Question, String())
     Public Property AnswerDictionary As Dictionary(Of Question, Answer()) = New Dictionary(Of Question, Answer())
 

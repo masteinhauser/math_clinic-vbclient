@@ -1,4 +1,8 @@
-﻿Option Strict On
+﻿' Desc: Form to view and work with Questions retrieved with the background
+' Auth: Myles A. K. Steinhauser
+' Date: 05/04/2012
+
+Option Strict On
 Option Explicit On
 
 Imports System

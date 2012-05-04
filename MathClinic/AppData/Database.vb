@@ -1,4 +1,6 @@
-﻿' Myles A. K. Steinhauser
+﻿' Desc: Centralized Database functions and wrappers
+' Auth: Myles A. K. Steinhauser
+' Date: 05/04/2012
 
 Option Strict On
 Option Explicit On

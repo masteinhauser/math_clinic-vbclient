@@ -45,3 +45,6 @@ C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\Interop.ADOX.d
 C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.vbproj.ResolveComReference.cache
 C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmMenu.resources
 C:\Users\myles\code\math_clinic-vbclient\MathClinic\obj\x86\Debug\MathClinic.frmSettings.resources
+E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\Interop.ADODB.dll
+E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\Interop.ADOX.dll
+E:\code\vb\MathClinic\MathClinic\obj\x86\Debug\MathClinic.vbproj.ResolveComReference.cache

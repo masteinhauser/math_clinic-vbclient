@@ -1,4 +1,8 @@
-﻿Option Strict On
+﻿' Desc: Centralized class to maintain state throughout the application
+' Auth: Myles A. K. Steinhauser
+' Date: 05/04/2012
+
+Option Strict On
 Option Explicit On
 
 Imports System

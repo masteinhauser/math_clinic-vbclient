@@ -1,4 +1,8 @@
-﻿Option Strict On
+﻿' Desc: Needed to login to the app and backend web service
+' Auth: Myles A. K. Steinhauser
+' Date: 05/04/2012
+
+Option Strict On
 Option Explicit On
 
 Imports System
