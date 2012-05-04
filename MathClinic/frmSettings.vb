@@ -41,6 +41,20 @@ Public Class frmSettings
             ' Now, let's create the required tables in the new database
             Database.CreateTable(strDatabasePath, "Questions", "id", dicQuestionFields)
 
+            ' Answers table which is used for the 
+            ' Add our needed fields to the fields dictionary
+            Dim dicAnswerFields As Dictionary(Of String, ADOX.DataTypeEnum) = New Dictionary(Of String, ADOX.DataTypeEnum)
+
+            ' Used to reference back to the MongoDB on the backend
+            dicAnswerFields.Add("question", ADOX.DataTypeEnum.adVarWChar)
+            dicAnswerFields.Add("answer", ADOX.DataTypeEnum.adVarWChar)
+            dicAnswerFields.Add("latency", ADOX.DataTypeEnum.adInteger)
+            dicAnswerFields.Add("correct", ADOX.DataTypeEnum.adBoolean)
+            dicAnswerFields.Add("submitted", ADOX.DataTypeEnum.adBoolean)
+
+            ' Now, let's create the required tables in the new database
+            Database.CreateTable(strDatabasePath, "Answers", "id", dicAnswerFields)
+
             MsgBox("New Offline Database created!")
         End If
 

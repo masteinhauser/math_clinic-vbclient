@@ -27,6 +27,7 @@ Partial Class frmSettings
         Me.Label2 = New System.Windows.Forms.Label()
         Me.chkOfflineMode = New System.Windows.Forms.CheckBox()
         Me.btnSaveSettings = New System.Windows.Forms.Button()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -72,11 +73,22 @@ Partial Class frmSettings
         Me.btnSaveSettings.Text = "Save Settings"
         Me.btnSaveSettings.UseVisualStyleBackColor = True
         '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.Location = New System.Drawing.Point(13, 50)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.ReadOnly = True
+        Me.RichTextBox1.Size = New System.Drawing.Size(216, 33)
+        Me.RichTextBox1.TabIndex = 5
+        Me.RichTextBox1.Text = "WARNING: If you change the path to the database, you will lose all unsynced data!" & _
+    "!!"
+        '
         'frmSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 262)
+        Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.btnSaveSettings)
         Me.Controls.Add(Me.chkOfflineMode)
         Me.Controls.Add(Me.Label2)
@@ -93,4 +105,5 @@ Partial Class frmSettings
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents chkOfflineMode As System.Windows.Forms.CheckBox
     Friend WithEvents btnSaveSettings As System.Windows.Forms.Button
+    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
 End Class

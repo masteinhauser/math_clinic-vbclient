@@ -21,6 +21,10 @@ Public Class frmQuestions
     End Sub
 
     Private Sub frmQuestions_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        If questions Is Nothing Then
+            LoadQuestions()
+        End If
+
         txtNumberToGenerate.Text = "5"
         For Each q As data.Question In questions
             lstQuestions.Items.Add(q.equation)
@@ -28,9 +32,23 @@ Public Class frmQuestions
     End Sub
 
     Private Sub btnGenerateQuestions_Click(sender As System.Object, e As System.EventArgs) Handles btnGenerateQuestions.Click
-        Dim strQuestion As String = lstQuestions.SelectedItem.ToString
-        Dim numGenerate As String = txtNumberToGenerate.Text
+        Dim strQuestion As String = String.Empty
+        Dim numGenerate As String = String.Empty
         Dim questionsGenerated As data.QuestionsGenerated
+
+        If lstQuestions.SelectedItem IsNot Nothing Then
+            strQuestion = lstQuestions.SelectedItem.ToString
+        Else
+            MessageBox.Show("You must select 1 question first!")
+            Exit Sub
+        End If
+
+        If txtNumberToGenerate.Text IsNot Nothing Then
+            numGenerate = txtNumberToGenerate.Text
+        Else
+            MessageBox.Show("You must enter the number of questions to generate!")
+            Exit Sub
+        End If
 
         lstGenerateQuestions.Items.Clear()
 
@@ -60,6 +78,32 @@ Public Class frmQuestions
             frmTest.Show()
             Me.Hide()
         End If
+    End Sub
+
+    Public Sub LoadQuestions()
+        Dim strResponse As String = String.Empty
+        Dim questions As data.QuestionsList
+        Dim jss As JavaScriptSerializer = New JavaScriptSerializer()
+
+        Try
+            ' Fire the request and get the response
+            strResponse = AppShared.makeGetRequest(AppShared.strBaseUrl + "questions")
+        Catch ex As Exception
+            Console.WriteLine("Error retrieving questions from server.")
+            Exit Sub
+        End Try
+
+        Try
+            ' Parse JSON response into a response object
+            questions = jss.Deserialize(Of data.QuestionsList)(strResponse)
+
+            ' Pass the questions on if they decide to view the questions list
+            Me.setList(questions.questions)
+
+        Catch ex As Exception
+            Console.WriteLine("Error parsing questions JSON")
+            Exit Sub
+        End Try
     End Sub
 
     Private Function buildQuestions(strQuestion As String, strCount As String) As data.QuestionsGenerated
@@ -103,6 +147,8 @@ Public Class frmQuestions
         For Each strQuestion As String In lstQuestions.Items
             ' "0" is used as a reserved value on the backend to return the max allowed combinations for that question.
             buildQuestions(strQuestion, "0")
+            ' Create reference to Database
+            ' Insert questions response into questions table
         Next
     End Sub
 End Class

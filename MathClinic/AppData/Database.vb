@@ -90,4 +90,9 @@ Public Module Database
         Return blnResult
     End Function
 
+    Public Sub SelectData(strDatabase As String, strTable As String)
+        'Instantiate Connection Class
+        Dim objConnection As New OleDbConnection(mstrCN)
+    End Sub
+
 End Module
